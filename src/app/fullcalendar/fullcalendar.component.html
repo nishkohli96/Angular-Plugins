@@ -1,0 +1,34 @@
+
+ <div class='app-top'>
+    <button (click)='toggleVisible()'>toggle visible</button>
+    <button (click)='toggleWeekends()'>toggle weekends</button>
+    <button (click)='gotoPast()'>go to a date in the past</button>
+    (also, click a date/time to add an event)
+</div>
+
+<div style="height:500px;background-color: bisque;">
+       <!-- <full-calendar   defaultView="dayGridMonth"  [plugins]="calendarPlugins"  [events]= calendarEvents ></full-calendar> -->
+
+    <div class='app-calendar' *ngIf="calendarVisible" >
+        <full-calendar
+          #calendar
+          defaultView="dayGridMonth"
+          [header]="{
+            right: 'prev,next today',
+            center: 'title',
+            left: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          }"
+          [plugins]="calendarPlugins"
+          [weekends]="calendarWeekends"
+          [events]="calendarEvents"
+          (dateClick)="handleDateClick($event)"
+        ></full-calendar>
+    </div>
+
+</div>
+
+<!--  Other fullcalendar properties
+  [weekends]="false"
+
+
+-->
